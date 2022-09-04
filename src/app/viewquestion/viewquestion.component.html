@@ -1,0 +1,6 @@
+<p *ngIf="question">Question No: {{question}}</p>
+
+
+<span *ngIf="question" mathjax-bind="question">Question No:</span>
+
+<button (click)="renderAgain()" pButton pRipple type="button" label="Render" class="p-button-success w-2"></button>

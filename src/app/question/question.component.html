@@ -1,0 +1,43 @@
+
+<h3>Question!</h3>
+
+<app-repo 
+    [index]="questionNo"
+    (question)="onQuestion($event)"
+    (totalquestions)="onTotal($event)">
+</app-repo>
+
+<p> Total Questions {{totalquestions}} </p>
+<app-mathjax [content]="content2"></app-mathjax>
+<br/>
+<br/>
+<button (click)="onBack()" pButton pRipple type="button" label="Back" class="p-button-info w-2 mr-3"></button>
+<button (click)="onNext()" pButton pRipple type="button" label="Next" class="p-button-success w-2 mr-3"></button>
+<br/>
+<br/>
+<app-mathjax2 [checkq]="inputQuestion"></app-mathjax2>
+<br/>
+<textarea rows="3" cols="70" pInputTextarea [(ngModel)]="inputQuestion"></textarea>
+<form [formGroup]="form">
+<input type="file" class="p-inputtext" accept="image/*" (change)="onImageUpload($event)" />
+<img [src]="imageDisplay" alt="">
+</form>
+<p>Q no</p><input type="number" pInputText [(ngModel)]="q" placeholder="no"> 
+<button (click)="onNo()" pButton pRipple type="button" label="Question" class="p-button-success w-2 mr-3"></button>
+<br/>
+<h5>Answers</h5>
+<input type="text" pInputText [(ngModel)]="a"> 
+<span class="ml-2"></span>
+<input type="text" pInputText [(ngModel)]="b"> 
+<span class="ml-2"></span>
+<input type="text" pInputText [(ngModel)]="c"> 
+<span class="ml-2"></span>
+<input type="text" pInputText [(ngModel)]="d"> 
+<span class="ml-2"></span>
+<br/>
+<br/>
+<input type="number" pInputText [(ngModel)]="answer" placeholder="answer"> 
+<span class="ml-2"></span>
+<br/>
+<br/>
+<button (click)="onAddQuestion()" pButton pRipple type="button" label="Add " class="p-button-success w-2 mr-3"></button> 

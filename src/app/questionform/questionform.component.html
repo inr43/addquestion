@@ -1,0 +1,127 @@
+<p-toast></p-toast>
+<div class="grid p-3 bg-cyan-500 border-primary border-round-xs shadow-8 m-3">
+    <div class="field col-3">
+        <p-calendar [(ngModel)]="year" view="year" dateFormat="yy" inputId="yearpicker" class="w-full"  ></p-calendar>
+    </div>
+    <div class="field col-3 md:col-3">
+        <select [(ngModel)]="subject" id="subject" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
+            <option>Physics</option>
+            <option>Chemistry</option>
+            <option>Maths</option>
+        </select>
+    </div>
+    <div class="field col-3 md:col-3">
+        <input type="text" pInputText [(ngModel)]="code" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto"> 
+    </div>  
+    <div class="field col-3 md:col-3">
+        <button (click)="onFetch()" pButton pRipple type="button" label="Fetch" class="w-full p-button-success"></button>
+    </div>
+<div class="grid p-3 surface-ground shadow-8 m-3">
+    <div class="card">
+    <h5>Question</h5>
+    <form  [formGroup]="form">
+
+    <div class="formgrid grid">
+        <div class="field col-4 md:col-4">
+            <label for="firstname6">Year</label>
+            <input id="firstname6" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field col-4 md:col-4">
+            <label for="lastname6">Subject</label>
+            <input id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field col-4 md:col-4">
+            <label for="lastname6">Code</label>
+            <input formControlName="key" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+            <div class="field col-6">
+                <label for="address">Question</label>
+                <textarea formControlName="question" id="address" type="text" rows="4" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"></textarea>
+            </div>
+            <div class="field col-6">
+                <label for="address">Image</label>
+                <input type="file" class="p-inputtext" accept="image/*" (change)="onImageUpload($event)" />
+            </div>
+            <div class="field col-12 md:col-6">
+                <label for="a">a)</label>
+                <input formControlName="a" id="a" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            </div>
+            <div class="field col-12 md:col-6">
+                <label for="b">b)</label>
+                <input formControlName="b" id="b" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            </div>
+            <div class="field col-12 md:col-6">
+                <label for="c">c)</label>
+                <input formControlName="c" id="c" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            </div>
+            <div class="field col-12 md:col-6">
+                <label for="d">d)</label>
+                <input formControlName="d" id="d" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            </div>
+            <div class="field col-12 md:col-3">
+            <label for="answer">Answer</label>
+            <input formControlName="answer" id="answer" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            </div>
+            <div class="field col-12 md:col-3">
+            <label for="no">No</label>
+            <input formControlName="q" id="no" type="number" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            </div>
+        <div class="field col-12 md:col-3">
+            <label for="zip">Save to database</label>
+            <button (click)="onSave()" pButton pRipple type="button" label="Save" class="w-full p-button-success"></button>
+        </div>
+        <div class="field col-12 md:col-3">
+            <label for="zip">Cancel Edit</label>
+            <button (click)="onEditCancel()"[disabled]="cancelEditbutton" pButton pRipple type="button" label="Cancel Edit" class="w-full p-button-danger"></button>
+        </div>
+    </div>
+    </form>
+</div>
+<div class="grid p-3 surface-ground shadow-8 m-1 w-full">
+    <div class="card">
+        <div class="formgrid grid">
+            <div class="field col-3 md:col-3">
+                <button (click)="refresh()" pButton pRipple type="button" icon="pi pi-refresh" class="p-button-rounded p-button-text p-button-plain"></button>
+            </div>
+            <div class="field col-12 md:col-3">
+                <button (click)="edit(content.id)"  pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text p-button-plain"></button>
+            </div>
+            <div class="field col-12 md:col-3">
+                <button (click)="del(content.id)" pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-text p-button-plain"></button>
+            </div>
+            <div *ngIf="content" class="card">
+                <div class="block card-container align-items-center">
+                    <app-mathjax [content]="content"></app-mathjax>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+<p-toolbar class="m-1 w-full">
+    <div class="field col-3 md:col-3">
+        <button (click)="onPrev()" [disabled]="prevbutton" pButton pRipple type="button" label="Back" class="p-button-raised w-full"></button>
+    </div>
+    <div class="field col-3 md:col-3">
+        <button (click)="onNext()" [disabled]="nextbutton" pButton pRipple type="button" label="Next" class="p-button-raised p-button-secondary w-full"></button>
+    </div>
+    <div class="field col-3 md:col-3">
+        <input [(ngModel)]="questionNo" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+    </div>
+    <div class="field col-3 md:col-3">
+        <button (click)="onQuestionNo()" pButton pRipple type="button" label="Go" class="p-button-raised w-full"></button>
+    </div>
+</p-toolbar>
+<p-toolbar class="m-1 w-full">
+    <div class="p-toolbar-group-left">
+        <label for="ansno">Answer no</label>
+        <input id="ansno" [(ngModel)]="answerNo" type="number" class="mr-4 p-inputtext-lg p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+        <label>Image</label>
+        <input type="file" class="mr-4 p-inputtext" accept="image/*" (change)="onanswerImageUpload($event)" />
+    </div>
+    <div class="p-toolbar-group-right">
+        <label for="qid">ID_</label>
+        <input id="qid" [(ngModel)]="questionId" type="text" class="mr-4 p-inputtext-lg p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+        <button (click)="uploadAnswerImage()" pButton pRipple type="button" label="Upload" class="mr-4 p-button-raised w-full"></button>
+    </div>
+</p-toolbar>
+<a href="https://demo.wiris.com/mathtype/en/developers.php" target="_blank">Type Maths Formulas!</a>

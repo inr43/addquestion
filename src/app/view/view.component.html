@@ -1,0 +1,35 @@
+<button (click)="back()" pButton pRipple type="button" label="Back" class="p-button-success w-2"></button>
+
+<p>Here sir</p>
+<div *ngFor="let item of questions">
+    <app-viewquestion [question]="item.question" ></app-viewquestion>
+</div>
+<!-- <p-table [value]="questions" [rowHover]="true" 
+[rows]="5"  [showCurrentPageReport]="true"   
+responsiveLayout="scroll" [paginator]="true" 
+currentPageReportTemplate="{first} to {last} entries">
+<ng-template pTemplate="caption">
+<div class="table-header">
+    Questions 
+</div>
+</ng-template>
+<ng-template pTemplate="header">
+<tr>
+    <th>Question</th>
+    <th>A</th>
+    <th>B</th>
+    <th>C</th>
+    <th>D</th>
+</tr>
+</ng-template>
+<ng-template pTemplate="body" let-question>
+<tr>
+    <td>{{question.question}}</td>
+    <td>{{question.a}}</td>
+    <td>{{question.b}}</td>
+    <td>{{question.c}}</td>
+    <td>{{question.d}}</td>
+</tr>
+</ng-template>
+</p-table>
+ -->

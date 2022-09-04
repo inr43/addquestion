@@ -1,0 +1,46 @@
+<div *ngIf="content">
+        <h5 class="m-5">Question No: {{content.q}} ---------> Answer : {{content.answer}}</h5>
+    <div class="formgrid grid m-5">
+        <div class="col-6 w-full" >
+            <h3 class="text-4xl" id="mathContent" [innerHTML]="content.question" style="height: 200px;"></h3>
+        </div>
+        <div *ngIf="content.image" class="col-6" >
+            <img  [src]="content.image" alt="">
+        </div>
+    </div>
+    <div *ngIf="content.a" class="col m-5">
+        <div class="field-checkbox col-12" >
+            <p-checkbox name="group1" ></p-checkbox>
+            <label  class="text-3xl" for="ny" [innerHTML]="content.a"></label>
+        </div>
+        <div class="field-checkbox col-12">
+            <p-checkbox name="group1" [value]="content.b"  [(ngModel)]="selectedCities"  inputId="sf"></p-checkbox>
+            <label class="text-3xl" for="sf" [innerHTML]="content.b"></label>
+        </div>
+        <div class="field-checkbox col-12">
+            <p-checkbox name="group1" value="{{content.c}}" [value]="content.c" [(ngModel)]="selectedCities" inputId="la"></p-checkbox>
+            <label class="text-3xl" for="la" [innerHTML]="content.c"></label>
+        </div>
+        <div class="field-checkbox col-12">
+            <p-checkbox name="group1" value="{{content.d}}" [value]="content.d" [(ngModel)]="selectedCities" inputId="ch"></p-checkbox>
+            <label class="text-3xl" for="ch" [innerHTML]="content.d"></label>
+        </div>
+    </div>
+    <div *ngIf="content.imagea" class="col m-5">
+        <div class="field-checkbox col-12" >
+            <p-checkbox name="group1" value="{{a}}" [(ngModel)]="selectedCities" inputId="ny"></p-checkbox>
+            <img  [src]="content.imagea" alt="">
+        </div>
+        <div class="field-checkbox col-12">
+            <p-checkbox name="group1" value="{{content.b}}"  [(ngModel)]="selectedCities" inputId="sf"></p-checkbox>
+            <img  [src]="content.imageb" alt="">
+        </div>
+        <div class="field-checkbox col-12">
+            <p-checkbox name="group1" value="{{content.c}}" [(ngModel)]="selectedCities" inputId="la"></p-checkbox>
+            <img  [src]="content.imagec" alt="">
+        </div>
+        <div class="field-checkbox col-12">
+            <p-checkbox name="group1" value="{{content.d}}" [(ngModel)]="selectedCities" inputId="ch"></p-checkbox>
+            <img  [src]="content.imaged" alt="">
+        </div>
+    </div>
